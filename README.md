@@ -65,12 +65,10 @@ Los enlaces y configuraciones se guardan en el navegador mediante: `localStorage
 
 ---
 
-
----
-
 ## Autor
 
 Desarrollado por **Verónica Corpa**
+Versión: 1.0
 
 ---
 
@@ -83,6 +81,28 @@ A **Juanma (Animalia Consulting SL)** por la idea inicial y el archivo `manifest
 ## Estado del proyecto
 
 Proyecto funcional en uso como página de inicio personalizada.
+
+---
+
+## Instalación manual (sin Chrome Web Store)
+
+1. Descargar el proyecto (ZIP o clonar repositorio)
+
+2. Descomprimir la carpeta
+
+3. Abrir Chrome y acceder a:
+
+   chrome://extensions/
+
+4. Activar **Modo desarrollador** (arriba a la derecha)
+
+5. Pulsar **Cargar descomprimida**
+
+6. Seleccionar la carpeta del proyecto
+
+7. Listo ✔
+
+Al abrir una nueva pestaña, aparecerá la página personalizada.
 
 ---
 

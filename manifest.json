@@ -1,9 +1,10 @@
 {
-  "name": "Mi Speed Dial",
-  "description": "Nueva pestaña personalizada",
-  "version": "1.0",
   "manifest_version": 3,
+  "name": "Mi Speed Dial",
+  "version": "1.0",
+  "description": "Nueva pestaña personalizada",
   "chrome_url_overrides": {
     "newtab": "index.html"
-  }
+  },
+  "permissions": []
 }
