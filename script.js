@@ -179,7 +179,6 @@ function render() {
     const header = document.createElement("div");
     header.className = "card-header";
     header.textContent = page.title;
-
     header.draggable = true;
 
     header.addEventListener("dragstart", e => {
@@ -191,7 +190,6 @@ function render() {
       card.classList.remove("dragging");
     });
 
-    // editar
     header.addEventListener("dblclick", () => {
       const nuevo = prompt("Nuevo nombre:", page.title)?.trim();
       if (!nuevo) return;
@@ -201,7 +199,6 @@ function render() {
       render();
     });
 
-    // eliminar
     header.addEventListener("contextmenu", e => {
       e.preventDefault();
 
@@ -230,11 +227,8 @@ function render() {
     const quick = document.createElement("div");
     quick.className = "quick-links";
 
-    // DROP EN CARD (FIX PRINCIPAL)
-    // permitir soltar
     quick.addEventListener("dragover", e => e.preventDefault());
 
-    // DROP EN CARD
     quick.addEventListener("drop", e => {
       e.preventDefault();
 
@@ -242,16 +236,15 @@ function render() {
       if (!raw) return;
 
       const data = JSON.parse(raw);
+      if (!data.id && data.id !== 0) return;
 
-      const link = linkPages[data.fromPage].links.find(l => l.id === data.id);
-      if (!link) return;
+      const movedLink = linkPages[data.fromPage].links.find(l => l.id === data.id);
+      if (!movedLink) return;
 
-      // eliminar del origen
       linkPages[data.fromPage].links =
         linkPages[data.fromPage].links.filter(l => l.id !== data.id);
 
-      // añadir al final
-      linkPages[pageIndex].links.push(link);
+      linkPages[pageIndex].links.push(movedLink);
 
       save();
       render();
@@ -261,7 +254,6 @@ function render() {
       quick.appendChild(createLink(link, pageIndex, i));
     });
 
-    // botón añadir
     const addBtn = document.createElement("button");
     addBtn.className = "add-link";
     addBtn.textContent = "+ Añadir";
@@ -276,22 +268,23 @@ function render() {
 // LINKS
 // =====================
 function createLink(link, pageIndex, linkIndex) {
+  // protección
+  if (!link || !link.url) return document.createElement("div");
+
   const a = document.createElement("a");
-  a.href = link.url;
+  a.href = link.url || "#";
   a.draggable = true;
 
   a.innerHTML = `
-  <img src="${link.iconUrl}">
-  <span>${link.text}</span>
-`;
+    <img src="${link.iconUrl}">
+    <span>${link.text}</span>
+  `;
 
   const img = a.querySelector("img");
 
   img.onerror = function () {
-    // evitar bucle infinito
     this.onerror = null;
 
-    // intento 2: Google favicon
     if (!this.dataset.fallback) {
       this.dataset.fallback = "google";
 
@@ -305,11 +298,10 @@ function createLink(link, pageIndex, linkIndex) {
       return;
     }
 
-    // intento 3: icono local
     this.src = "icons/default.png";
   };
 
-  // DRAG START (FIX)
+  // DRAG START
   a.addEventListener("dragstart", e => {
     e.stopPropagation();
 
@@ -320,6 +312,8 @@ function createLink(link, pageIndex, linkIndex) {
   });
 
   // DROP SOBRE LINK
+  a.addEventListener("dragover", e => e.preventDefault());
+
   a.addEventListener("drop", e => {
     e.preventDefault();
 
@@ -328,15 +322,13 @@ function createLink(link, pageIndex, linkIndex) {
 
     const data = JSON.parse(raw);
 
-    const link = linkPages[data.fromPage].links.find(l => l.id === data.id);
-    if (!link) return;
+    const movedLink = linkPages[data.fromPage].links.find(l => l.id === data.id);
+    if (!movedLink) return;
 
-    // eliminar del origen
     linkPages[data.fromPage].links =
       linkPages[data.fromPage].links.filter(l => l.id !== data.id);
 
-    // insertar en posición
-    linkPages[pageIndex].links.splice(linkIndex, 0, link);
+    linkPages[pageIndex].links.splice(linkIndex, 0, movedLink);
 
     save();
     render();
