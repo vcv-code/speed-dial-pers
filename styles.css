@@ -1,0 +1,327 @@
+/* RESET Y BASE */
+body {
+    margin: 0;
+    background: #0b0b0b;
+    font-family: sans-serif;
+}
+
+/* huella decorativa fija */
+body::after {
+    content: "🐾";
+    position: fixed;
+    bottom: 10px;
+    left: 15px;
+    font-size: 22px;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+/* TITULO */
+h1 {
+    text-align: center;
+    font-size: 22px;
+    color: white;
+    margin: 10px 0 6px;
+}
+
+/* GRID PRINCIPAL */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+    padding: 8px 18px 18px;
+}
+
+/* CARD */
+.card {
+    position: relative;
+    background: #e0e0e0;
+    border-top: 4px solid #999;
+    border-radius: 16px;
+    padding: 12px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    animation: fadeIn 0.2s ease;
+}
+
+/* colores predefinidos */
+.card.asociacion { background: #dff5e1; border-top: 4px solid #4caf50; }
+.card.programacion { background: #dfeaff; border-top: 4px solid #2196f3; }
+.card.gestiones { background: #ffe9d6; border-top: 4px solid #ff9800; }
+.card.tiendas { background: #f3e5ff; border-top: 4px solid #9c27b0; }
+.card.varios { background: #eaeaea; border-top: 4px solid #666; }
+.card.info { background: #e0f7fa; border-top: 4px solid #00acc1; }
+
+/* capa para oscurecer SOLO el fondo */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.2s ease;
+
+    z-index: 0;
+}
+
+/* hover base (oscurecido neutro) */
+.card:hover::before {
+    background: rgba(0, 0, 0, 0.10);
+}
+
+/* elevar ligeramente */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* contenido por encima */
+.card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* animacion suave de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HEADER DE CARD */
+/* huella junto al titulo */
+.card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.3px;
+    font-weight: bold;
+    margin-bottom: 8px;
+
+    cursor: grab;
+}
+
+/* huella integrada junto al texto */
+.card-header::before {
+    content: "🐾";
+    font-size: 14px;
+
+    opacity: 0;
+    transform: translateX(-4px);
+
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* al hacer hover aparece suave */
+.card:hover .card-header::before {
+    opacity: 0.6;
+    transform: translateX(0);
+}
+
+/* estado drag */
+.card-header:active {
+    cursor: grabbing;
+}
+
+.card.dragging {
+    opacity: 0.5;
+}
+
+/* GRID INTERNO DE LINKS */
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+
+    max-height: calc(68px * 2 + 8px);
+    overflow-y: auto;
+
+    flex-grow: 1;
+}
+
+/* scroll interno */
+.quick-links::-webkit-scrollbar {
+    width: 6px;
+}
+
+.quick-links::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+/* LINK INDIVIDUAL */
+.quick-links a {
+    width: 68px;
+    height: 68px;
+
+    background: white;
+    border: 1px solid black;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    color: black;
+    font-size: 10px;
+
+    gap: 4px;
+    padding: 4px;
+    box-sizing: border-box;
+
+    cursor: default;
+
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* hover suave */
+.quick-links a:hover {
+    background: #f5f5f5;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.quick-links a:active {
+    cursor: grabbing;
+}
+
+/* ICONOS */
+.quick-links img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+/* iconos especiales */
+.quick-links img[src*="aemet"],
+.quick-links img[src*="asisa"] {
+    transform: scale(1.6);
+}
+
+/* hover iconos */
+.quick-links a:hover img {
+    transform: scale(1.1);
+}
+
+.quick-links a:hover img[src*="aemet"],
+.quick-links a:hover img[src*="asisa"] {
+    transform: scale(1.7);
+}
+
+/* TEXTO */
+.quick-links span {
+    width: 100%;
+    text-align: center;
+    line-height: 1.1;
+    word-break: break-word;
+}
+
+/* BOTON AÑADIR */
+.add-link {
+    margin-top: 8px;
+    border: none;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.add-link:hover {
+    background: rgba(0, 0, 0, 0.18);
+}
+
+/* BOTONES SUPERIORES */
+#resetBtn,
+#addCategoryBtn {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#resetBtn:hover,
+#addCategoryBtn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* BUSCADOR */
+.search-container {
+    position: fixed;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-container input {
+    width: 500px;
+    max-width: 90%;
+
+    padding: 10px 18px;
+    border-radius: 999px;
+
+    border: none;
+    outline: none;
+
+    font-size: 14px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* RELOJ */
+.clock {
+    position: fixed;
+    top: 10px;
+    right: 18px;
+
+    color: white;
+    font-size: 13px;
+    opacity: 0.8;
+
+    text-align: right;
+    line-height: 1.2;
+
+    pointer-events: none;
+}
