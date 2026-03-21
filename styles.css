@@ -39,7 +39,7 @@ h1 {
     border-top: 4px solid #999;
     border-radius: 16px;
     padding: 12px;
-    overflow: hidden;
+    overflow: visible;
 
     display: flex;
     flex-direction: column;
@@ -50,12 +50,35 @@ h1 {
 }
 
 /* colores predefinidos */
-.card.asociacion { background: #dff5e1; border-top: 4px solid #4caf50; }
-.card.programacion { background: #dfeaff; border-top: 4px solid #2196f3; }
-.card.gestiones { background: #ffe9d6; border-top: 4px solid #ff9800; }
-.card.tiendas { background: #f3e5ff; border-top: 4px solid #9c27b0; }
-.card.varios { background: #eaeaea; border-top: 4px solid #666; }
-.card.info { background: #e0f7fa; border-top: 4px solid #00acc1; }
+.card.asociacion {
+    background: #dff5e1;
+    border-top: 4px solid #4caf50;
+}
+
+.card.programacion {
+    background: #dfeaff;
+    border-top: 4px solid #2196f3;
+}
+
+.card.gestiones {
+    background: #ffe9d6;
+    border-top: 4px solid #ff9800;
+}
+
+.card.tiendas {
+    background: #f3e5ff;
+    border-top: 4px solid #9c27b0;
+}
+
+.card.varios {
+    background: #eaeaea;
+    border-top: 4px solid #666;
+}
+
+.card.info {
+    background: #e0f7fa;
+    border-top: 4px solid #00acc1;
+}
 
 /* capa para oscurecer SOLO el fondo */
 .card::before {
@@ -81,7 +104,7 @@ h1 {
 }
 
 /* contenido por encima */
-.card > * {
+.card>* {
     position: relative;
     z-index: 1;
 }
@@ -149,7 +172,7 @@ h1 {
 
     max-height: calc(68px * 2 + 8px);
     overflow-y: auto;
-
+    min-height: calc(68px * 2 + 8px);
     flex-grow: 1;
 }
 
@@ -298,6 +321,7 @@ h1 {
     display: none;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
 }
 
 .modal-content {

@@ -8,18 +8,23 @@ Extensión de navegador tipo speed dial para personalizar la nueva pestaña con 
 
 ## ✨ Características
 
-- Categorías en formato cards
-- Enlaces con icono + texto
+- Categorías en formato cards  
+- Enlaces con icono + texto  
 - Drag & drop:
-  - entre enlaces
-  - entre categorías
-- Scroll interno por categoría
-- Añadir, editar y eliminar enlaces
-- Crear y eliminar categorías
-- Persistencia con localStorage
-- Buscador Google integrado
-- Reloj en tiempo real
-- Interfaz limpia, rápida y responsive
+  - entre enlaces (reordenar dentro de la misma categoría)
+  - entre categorías (mover enlaces)
+  - reordenar categorías  
+- Scroll interno por categoría (máx. 2 filas visibles)  
+- Añadir, editar y eliminar enlaces  
+- Crear, renombrar y eliminar categorías  
+- Sistema de iconos automático:
+  - favicon del sitio
+  - fallback a Google (`s2/favicons`)
+  - icono local por defecto  
+- Persistencia con localStorage  
+- Buscador Google integrado  
+- Reloj en tiempo real  
+- Interfaz limpia, rápida y responsive  
 
 ---
 
@@ -64,7 +69,7 @@ Los enlaces y configuraciones se guardan en el navegador mediante `localStorage`
 ## 👤 Autor
 
 **Verónica Corpa**  
-Versión: 1.0
+Versión: 1.1
 
 ---
 
@@ -76,17 +81,18 @@ A **Juanma (Animalia Consulting SL)** por la idea inicial y el archivo `manifest
 
 ## 📌 Estado del proyecto
 
-Proyecto funcional en uso como página de inicio personalizada.
+Proyecto desarrollado como práctica de programación web, con enfoque en usabilidad, manipulación del DOM y personalización de la experiencia de usuario.
 
 ---
 
 ## 🔧 Posibles mejoras futuras
 
-- Animaciones avanzadas en drag & drop  
+- Animaciones en drag & drop  
+- Selector manual de iconos (subida o librería)  
 - Temas (modo claro/oscuro)  
 - Exportar / importar configuración  
 - Sincronización entre dispositivos  
-- Selector visual de iconos  
+- Edición directa sin modal  
 
 ---
 

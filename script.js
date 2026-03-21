@@ -6,76 +6,76 @@ const defaultPages = [
     id: "asociacion",
     title: "Aso y RRSS",
     links: [
-      { text: "La Gata Pirata", url: "https://lagatapirata.org", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=lagatapirata.org" },
-      { text: "Facebook", url: "https://facebook.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=facebook.com" },
-      { text: "Instagram", url: "https://instagram.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=instagram.com" },
-      { text: "WhatsApp", url: "https://web.whatsapp.com", iconUrl: "icons/whatsapp.png" },
-      { text: "Telegram", url: "https://web.telegram.org", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=telegram.org" },
-      { text: "Linktree", url: "https://linktr.ee", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=linktr.ee" }
+      { id: "lgp", text: "La Gata Pirata", url: "https://lagatapirata.org", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=lagatapirata.org" },
+      { id: "fb", text: "Facebook", url: "https://facebook.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=facebook.com" },
+      { id: "ig", text: "Instagram", url: "https://instagram.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=instagram.com" },
+      { id: "wa", text: "WhatsApp", url: "https://web.whatsapp.com", iconUrl: "icons/whatsapp.png" },
+      { id: "tg", text: "Telegram", url: "https://web.telegram.org", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=telegram.org" },
+      { id: "lt", text: "Linktree", url: "https://linktr.ee", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=linktr.ee" }
     ]
   },
   {
     id: "programacion",
     title: "Programación",
     links: [
-      { text: "GitHub", url: "https://github.com", iconUrl: "icons/github.png" },
-      { text: "ChatGPT", url: "https://chatgpt.com", iconUrl: "icons/chatgpt.png" },
-      { text: "Meow Metrics", url: "https://astounding-druid-2da323.netlify.app/", iconUrl: "icons/meowmetrics.png" },
-      { text: "Hostinger", url: "https://hpanel.hostinger.com", iconUrl: "icons/hostinger.svg" },
-      { text: "QR Codes", url: "https://www.codigos-qr.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=codigos-qr.com" }
+      { id: "gh", text: "GitHub", url: "https://github.com", iconUrl: "icons/github.png" },
+      { id: "chatgpt", text: "ChatGPT", url: "https://chatgpt.com", iconUrl: "icons/chatgpt.png" },
+      { id: "meow", text: "Meow Metrics", url: "https://astounding-druid-2da323.netlify.app/", iconUrl: "icons/meowmetrics.png" },
+      { id: "hostinger", text: "Hostinger", url: "https://hpanel.hostinger.com", iconUrl: "icons/hostinger.svg" },
+      { id: "qr", text: "QR Codes", url: "https://www.codigos-qr.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=codigos-qr.com" }
     ]
   },
   {
     id: "gestiones",
     title: "Gestiones",
     links: [
-      { text: "Gmail", url: "https://mail.google.com", iconUrl: "icons/gmail.png" },
-      { text: "Drive", url: "https://drive.google.com", iconUrl: "icons/drive.png" },
-      { text: "Outlook", url: "https://outlook.office.com", iconUrl: "icons/Outlook_Logo.png" },
-      { text: "Teams", url: "https://teams.microsoft.com", iconUrl: "icons/teams.svg" },
-      { text: "Meet", url: "https://meet.google.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=meet.google.com" },
-      { text: "Agencia Tributaria", url: "https://www.agenciatributaria.es", iconUrl: "icons/agencia-tributaria.png" },
-      { text: "Seguridad Social", url: "https://sede.seg-social.gob.es", iconUrl: "icons/seguridad-social-logo.png" },
-      { text: "Comunidad Madrid", url: "https://www.comunidad.madrid", iconUrl: "icons/CAM-logo.png" },
-      { text: "Ayto Fuenla", url: "https://www.ayto-fuenlabrada.es", iconUrl: "icons/AyuntamientoFuenla.png" },
-      { text: "BOE", url: "https://www.boe.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=boe.es" },
-      { text: "BOCM", url: "https://www.bocm.es", iconUrl: "icons/bocm.png" },
-      { text: "BNDS", url: "https://www.infosubvenciones.es", iconUrl: "icons/BDNS.png" }
+      { id: "gmail", text: "Gmail", url: "https://mail.google.com", iconUrl: "icons/gmail.png" },
+      { id: "drive", text: "Drive", url: "https://drive.google.com", iconUrl: "icons/drive.png" },
+      { id: "outlook", text: "Outlook", url: "https://outlook.office.com", iconUrl: "icons/Outlook_Logo.png" },
+      { id: "teams", text: "Teams", url: "https://teams.microsoft.com", iconUrl: "icons/teams.svg" },
+      { id: "meet", text: "Meet", url: "https://meet.google.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=meet.google.com" },
+      { id: "aeat", text: "Agencia Tributaria", url: "https://www.agenciatributaria.es", iconUrl: "icons/agencia-tributaria.png" },
+      { id: "ss", text: "Seguridad Social", url: "https://sede.seg-social.gob.es", iconUrl: "icons/seguridad-social-logo.png" },
+      { id: "cam", text: "Comunidad Madrid", url: "https://www.comunidad.madrid", iconUrl: "icons/CAM-logo.png" },
+      { id: "fuenla", text: "Ayto Fuenla", url: "https://www.ayto-fuenlabrada.es", iconUrl: "icons/AyuntamientoFuenla.png" },
+      { id: "boe", text: "BOE", url: "https://www.boe.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=boe.es" },
+      { id: "bocm", text: "BOCM", url: "https://www.bocm.es", iconUrl: "icons/bocm.png" },
+      { id: "bnds", text: "BNDS", url: "https://www.infosubvenciones.es", iconUrl: "icons/BDNS.png" }
     ]
   },
   {
     id: "tiendas",
     title: "Tiendas",
     links: [
-      { text: "Amazon", url: "https://amazon.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=amazon.es" },
-      { text: "Zooplus DE", url: "https://zooplus.de", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=zooplus.de" },
-      { text: "Zooplus ES", url: "https://zooplus.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=zooplus.es" },
-      { text: "Bitiba", url: "https://bitiba.es", iconUrl: "icons/bitibaok.png" },
-      { text: "Obramat", url: "https://www.obramat.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=obramat.es" },
-      { text: "Leroy Merlin", url: "https://www.leroymerlin.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=leroymerlin.es" }
+      { id: "amazon", text: "Amazon", url: "https://amazon.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=amazon.es" },
+      { id: "zooplus_de", text: "Zooplus DE", url: "https://zooplus.de", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=zooplus.de" },
+      { id: "zooplus_es", text: "Zooplus ES", url: "https://zooplus.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=zooplus.es" },
+      { id: "bitiba", text: "Bitiba", url: "https://bitiba.es", iconUrl: "icons/bitibaok.png" },
+      { id: "obramat", text: "Obramat", url: "https://www.obramat.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=obramat.es" },
+      { id: "leroy", text: "Leroy Merlin", url: "https://www.leroymerlin.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=leroymerlin.es" }
     ]
   },
   {
     id: "info",
     title: "Información",
     links: [
-      { text: "20 Minutos", url: "https://www.20minutos.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=20minutos.es" },
-      { text: "YouTube", url: "https://youtube.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=youtube.com" },
-      { text: "Archive.org", url: "https://archive.org", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=archive.org" },
-      { text: "AEMET", url: "https://www.aemet.es", iconUrl: "icons/aemet-logo.png" }
+      { id: "20min", text: "20 Minutos", url: "https://www.20minutos.es", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=20minutos.es" },
+      { id: "yt", text: "YouTube", url: "https://youtube.com", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=youtube.com" },
+      { id: "archive", text: "Archive.org", url: "https://archive.org", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=archive.org" },
+      { id: "aemet", text: "AEMET", url: "https://www.aemet.es", iconUrl: "icons/aemet-logo.png" }
     ]
   },
   {
     id: "varios",
     title: "Varios",
     links: [
-      { text: "Asisa", url: "https://www.asisa.es", iconUrl: "icons/asisa.png" }
+      { id: "asisa", text: "Asisa", url: "https://www.asisa.es", iconUrl: "icons/asisa.png" }
     ]
   }
 ];
-  
+
 // =====================
-// ====== CARGA DATOS ======
+// CARGA DATOS
 // =====================
 let linkPages;
 
@@ -87,7 +87,7 @@ try {
 }
 
 // =====================
-// ====== SINCRONIZAR ICONOS ======
+// SINCRONIZAR ICONOS
 // =====================
 defaultPages.forEach(defaultPage => {
   const currentPage = linkPages.find(p => p.id === defaultPage.id);
@@ -104,7 +104,7 @@ defaultPages.forEach(defaultPage => {
 });
 
 // =====================
-// ====== UTILIDADES ======
+// UTILIDADES
 // =====================
 const grid = document.querySelector(".grid");
 
@@ -113,7 +113,7 @@ function save() {
 }
 
 // =====================
-// ====== CONTROLES UI ======
+// CONTROLES UI
 // =====================
 const controls = document.createElement("div");
 controls.style.position = "fixed";
@@ -132,7 +132,6 @@ document.body.appendChild(controls);
 // RESET
 document.getElementById("resetBtn").onclick = () => {
   if (!confirm("¿Restablecer todo?")) return;
-
   localStorage.removeItem("linksData");
   location.reload();
 };
@@ -142,12 +141,12 @@ document.getElementById("addCategoryBtn").onclick = () => {
   const name = prompt("Nombre de la categoría:")?.trim();
   if (!name) return;
 
-  const color = prompt("Color (ej: #ff9800 o red):", "#999");
+  const color = prompt("Color:", "#999");
 
   const id = name.toLowerCase().replace(/\s+/g, "_");
 
   if (linkPages.some(p => p.id === id)) {
-    alert("Ya existe una categoría con ese nombre");
+    alert("Ya existe");
     return;
   }
 
@@ -163,7 +162,7 @@ document.getElementById("addCategoryBtn").onclick = () => {
 };
 
 // =====================
-// ====== RENDER ======
+// RENDER
 // =====================
 function render() {
   grid.innerHTML = "";
@@ -172,17 +171,15 @@ function render() {
     const card = document.createElement("div");
     card.className = "card " + page.id;
 
-    // COLOR SOLO PARA NUEVAS CATEGORÍAS
     if (page.color && !defaultPages.find(p => p.id === page.id)) {
       card.style.borderTop = `4px solid ${page.color}`;
     }
 
-    // ===== HEADER =====
+    // HEADER
     const header = document.createElement("div");
     header.className = "card-header";
     header.textContent = page.title;
 
-    // DRAG SOLO HEADER
     header.draggable = true;
 
     header.addEventListener("dragstart", e => {
@@ -194,7 +191,7 @@ function render() {
       card.classList.remove("dragging");
     });
 
-    // EDITAR NOMBRE
+    // editar
     header.addEventListener("dblclick", () => {
       const nuevo = prompt("Nuevo nombre:", page.title)?.trim();
       if (!nuevo) return;
@@ -204,7 +201,7 @@ function render() {
       render();
     });
 
-    // ELIMINAR CATEGORÍA
+    // eliminar
     header.addEventListener("contextmenu", e => {
       e.preventDefault();
 
@@ -215,12 +212,10 @@ function render() {
       render();
     });
 
-    // DROP CARD
+    // mover cards
     card.addEventListener("dragover", e => e.preventDefault());
 
     card.addEventListener("drop", e => {
-      e.preventDefault();
-
       const fromIndex = parseInt(e.dataTransfer.getData("card-index"));
       if (isNaN(fromIndex)) return;
 
@@ -231,15 +226,42 @@ function render() {
       render();
     });
 
-    // ===== LINKS =====
+    // LINKS
     const quick = document.createElement("div");
     quick.className = "quick-links";
+
+    // DROP EN CARD (FIX PRINCIPAL)
+    // permitir soltar
+    quick.addEventListener("dragover", e => e.preventDefault());
+
+    // DROP EN CARD
+    quick.addEventListener("drop", e => {
+      e.preventDefault();
+
+      const raw = e.dataTransfer.getData("application/link");
+      if (!raw) return;
+
+      const data = JSON.parse(raw);
+
+      const link = linkPages[data.fromPage].links.find(l => l.id === data.id);
+      if (!link) return;
+
+      // eliminar del origen
+      linkPages[data.fromPage].links =
+        linkPages[data.fromPage].links.filter(l => l.id !== data.id);
+
+      // añadir al final
+      linkPages[pageIndex].links.push(link);
+
+      save();
+      render();
+    });
 
     page.links.forEach((link, i) => {
       quick.appendChild(createLink(link, pageIndex, i));
     });
 
-    // BOTÓN AÑADIR LINK
+    // botón añadir
     const addBtn = document.createElement("button");
     addBtn.className = "add-link";
     addBtn.textContent = "+ Añadir";
@@ -251,7 +273,7 @@ function render() {
 }
 
 // =====================
-// ====== LINKS ======
+// LINKS
 // =====================
 function createLink(link, pageIndex, linkIndex) {
   const a = document.createElement("a");
@@ -259,35 +281,68 @@ function createLink(link, pageIndex, linkIndex) {
   a.draggable = true;
 
   a.innerHTML = `
-    <img src="${link.iconUrl}">
-    <span>${link.text}</span>
-  `;
+  <img src="${link.iconUrl}">
+  <span>${link.text}</span>
+`;
 
-  // DRAG LINK
+  const img = a.querySelector("img");
+
+  img.onerror = function () {
+    // evitar bucle infinito
+    this.onerror = null;
+
+    // intento 2: Google favicon
+    if (!this.dataset.fallback) {
+      this.dataset.fallback = "google";
+
+      try {
+        const domain = new URL(link.url).hostname;
+        this.src = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
+      } catch {
+        this.src = "icons/default.png";
+      }
+
+      return;
+    }
+
+    // intento 3: icono local
+    this.src = "icons/default.png";
+  };
+
+  // DRAG START (FIX)
   a.addEventListener("dragstart", e => {
     e.stopPropagation();
-    e.dataTransfer.setData("text/plain", JSON.stringify({
-      fromPage: pageIndex,
-      fromIndex: linkIndex
+
+    e.dataTransfer.setData("application/link", JSON.stringify({
+      id: link.id,
+      fromPage: pageIndex
     }));
   });
 
-  a.addEventListener("dragover", e => e.preventDefault());
-
+  // DROP SOBRE LINK
   a.addEventListener("drop", e => {
     e.preventDefault();
 
-    const data = JSON.parse(e.dataTransfer.getData("text/plain"));
-    const moved = linkPages[data.fromPage].links[data.fromIndex];
+    const raw = e.dataTransfer.getData("application/link");
+    if (!raw) return;
 
-    linkPages[data.fromPage].links.splice(data.fromIndex, 1);
-    linkPages[pageIndex].links.splice(linkIndex, 0, moved);
+    const data = JSON.parse(raw);
+
+    const link = linkPages[data.fromPage].links.find(l => l.id === data.id);
+    if (!link) return;
+
+    // eliminar del origen
+    linkPages[data.fromPage].links =
+      linkPages[data.fromPage].links.filter(l => l.id !== data.id);
+
+    // insertar en posición
+    linkPages[pageIndex].links.splice(linkIndex, 0, link);
 
     save();
     render();
   });
 
-  // EDITAR LINK
+  // editar
   a.addEventListener("contextmenu", e => {
     e.preventDefault();
     openModal(pageIndex, linkIndex);
@@ -297,7 +352,7 @@ function createLink(link, pageIndex, linkIndex) {
 }
 
 // =====================
-// ====== MODAL ======
+// MODAL (SIN CAMBIOS)
 // =====================
 let currentPage = null;
 let currentLink = null;
@@ -315,7 +370,6 @@ modal.innerHTML = `
 `;
 document.body.appendChild(modal);
 
-// ABRIR
 function openModal(pageIndex, linkIndex = null) {
   currentPage = pageIndex;
   currentLink = linkIndex;
@@ -335,12 +389,10 @@ function openModal(pageIndex, linkIndex = null) {
   }
 }
 
-// CANCELAR
 document.getElementById("cancel").onclick = () => {
   modal.style.display = "none";
 };
 
-// GUARDAR
 document.getElementById("save").onclick = () => {
   const name = document.getElementById("name").value.trim();
   let url = document.getElementById("url").value.trim();
@@ -350,16 +402,48 @@ document.getElementById("save").onclick = () => {
   if (!url.startsWith("http")) url = "https://" + url;
 
   let iconUrl;
+
   try {
-    iconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${new URL(url).hostname}`;
+    const domain = new URL(url).hostname;
+
+    iconUrl = `https://${domain}/favicon.ico`;
   } catch {
-    iconUrl = "";
+    iconUrl = "icons/default.png";
+  }
+
+  // =====================
+  // VALIDAR DUPLICADOS
+  // =====================
+  const exists = linkPages[currentPage].links.some((l, i) => {
+    if (currentLink !== null && i === currentLink) return false;
+
+    return (
+      l.url.toLowerCase() === url.toLowerCase() ||
+      l.text.toLowerCase() === name.toLowerCase()
+    );
+  });
+
+  if (exists) {
+    alert("Ya existe un enlace con ese nombre o URL en esta categoría");
+    return;
   }
 
   if (currentLink !== null) {
-    linkPages[currentPage].links[currentLink] = { text: name, url, iconUrl };
+    // EDITAR
+    linkPages[currentPage].links[currentLink] = {
+      ...linkPages[currentPage].links[currentLink],
+      text: name,
+      url,
+      iconUrl
+    };
   } else {
-    linkPages[currentPage].links.push({ text: name, url, iconUrl });
+    // NUEVO
+    linkPages[currentPage].links.push({
+      id: crypto.randomUUID(),
+      text: name,
+      url,
+      iconUrl
+    });
   }
 
   modal.style.display = "none";
@@ -367,7 +451,6 @@ document.getElementById("save").onclick = () => {
   render();
 };
 
-// ELIMINAR
 document.getElementById("delete").onclick = () => {
   if (currentLink !== null) {
     linkPages[currentPage].links.splice(currentLink, 1);
@@ -378,7 +461,7 @@ document.getElementById("delete").onclick = () => {
 };
 
 // =====================
-// ====== RELOJ ======
+// RELOJ
 // =====================
 const clock = document.createElement("div");
 clock.className = "clock";
@@ -406,6 +489,6 @@ setInterval(updateClock, 1000);
 updateClock();
 
 // =====================
-// ====== INIT ======
+// INIT
 // =====================
 render();
