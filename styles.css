@@ -29,7 +29,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 18px;
-    padding: 8px 18px 18px;
+    padding: 22px 18px 18px;
 }
 
 /* CARD */
@@ -167,12 +167,12 @@ h1 {
 /* GRID INTERNO DE LINKS */
 .quick-links {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
     gap: 8px;
 
-    max-height: calc(68px * 2 + 8px);
+    max-height: calc(90px * 2 + 8px);
     overflow-y: auto;
-    min-height: calc(68px * 2 + 8px);
+    min-height: calc(90px * 2 + 8px);
     flex-grow: 1;
 }
 
@@ -188,8 +188,8 @@ h1 {
 
 /* LINK INDIVIDUAL */
 .quick-links a {
-    width: 68px;
-    height: 68px;
+    width: 90px;
+    height: 90px;
 
     background: white;
     border: 1px solid black;
@@ -204,14 +204,62 @@ h1 {
     color: black;
     font-size: 10px;
 
-    gap: 4px;
-    padding: 4px;
+    gap: 5px;
+    padding: 2px;
     box-sizing: border-box;
 
     cursor: default;
+    position: relative; /* necesario para la zona de drop */
 
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== ZONA DE DROP (esquina superior derecha, dentro del icono) ===== */
+.drop-zone {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4caf50;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+
+    opacity: 0;
+    transform: scale(0.4);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+
+    z-index: 10;
+    cursor: copy;
+    /* Sin pointer-events:none — la opacidad 0 la oculta visualmente
+       pero el navegador necesita que siempre reciba eventos drag */
+}
+
+.drop-zone::before {
+    content: "+";
+}
+
+/* Mostrar las zonas mientras se arrastra */
+body.is-dragging .quick-links a:not(.dragging) .drop-zone {
+    opacity: 0.8;
+    transform: scale(1);
+}
+
+/* Resaltar cuando el cursor entra */
+body.is-dragging .quick-links a:not(.dragging) .drop-zone.active {
+    opacity: 1;
+    transform: scale(1.35);
+    background: #1976d2;
 }
 
 /* hover suave */
@@ -226,8 +274,8 @@ h1 {
 
 /* ICONOS */
 .quick-links img {
-    width: 26px;
-    height: 26px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     display: block;
     transition: transform 0.2s ease;
@@ -253,6 +301,7 @@ h1 {
 .quick-links span {
     width: 100%;
     text-align: center;
+    font-size: 12px;
     line-height: 1.1;
     word-break: break-word;
 }
@@ -296,11 +345,13 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .search-container input {
     width: 500px;
-    max-width: 90%;
+    max-width: 80vw;
 
     padding: 10px 18px;
     border-radius: 999px;
@@ -311,6 +362,31 @@ h1 {
     font-size: 14px;
 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón Maps */
+.maps-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: background 0.2s ease;
+}
+
+.maps-btn img {
+    width: 18px;
+    height: 18px;
+}
+
+.maps-btn:hover {
+    background: rgba(255, 255, 255, 0.28);
 }
 
 /* MODAL */
@@ -348,4 +424,9 @@ h1 {
     line-height: 1.2;
 
     pointer-events: none;
+}
+
+.quick-links a.dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
 }
