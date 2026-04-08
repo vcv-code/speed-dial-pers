@@ -24,7 +24,8 @@ const defaultPages = [
       { id: "meow",     text: "Meow Metrics",  url: "https://astounding-druid-2da323.netlify.app/",             iconUrl: "icons/meowmetrics.png" },
       { id: "hostinger",text: "Hostinger",     url: "https://hpanel.hostinger.com",                             iconUrl: "icons/hostinger.svg" },
       { id: "carbon",   text: "Carbon - Código", url: "https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=one-light&wt=none&l=auto&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=143%25&si=false&es=2x&wm=false", iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=carbon.now.sh" },
-      { id: "qr",       text: "QR Codes",      url: "https://www.codigos-qr.com",                               iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=codigos-qr.com" }
+      { id: "qr",       text: "QR Codes",      url: "https://www.codigos-qr.com",                               iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=codigos-qr.com" },
+      { id: "gitmoji",  text: "Gitmoji",       url: "https://gitmoji.dev",                                      iconUrl: "https://www.google.com/s2/favicons?sz=64&domain=gitmoji.dev" }
     ]
   },
   {
@@ -125,6 +126,7 @@ controls.style.top = "10px";
 controls.style.left = "15px";
 controls.style.display = "flex";
 controls.style.gap = "6px";
+controls.style.zIndex = "100";
 
 controls.innerHTML = `
   <button id="resetBtn">Reset</button>

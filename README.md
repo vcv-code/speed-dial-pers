@@ -26,6 +26,8 @@ Extensión de navegador tipo speed dial para personalizar la nueva pestaña con 
 - Persistencia con `localStorage`
 - Buscador de Google integrado con acceso rápido a Maps
 - Reloj en tiempo real
+- Barra inferior y reloj fijos, siempre visibles por encima del contenido
+- Botones Reset y Categoría con estilo coherente, siempre en primer plano
 - Interfaz limpia, rápida y responsive
 
 ---
@@ -71,6 +73,14 @@ Si se pulsa **Reset**, se recuperan los enlaces predeterminados definidos en `sc
 
 ## 🔄 Historial de cambios
 
+### v1.3
+- Barra de búsqueda y botón Maps fijos en la parte inferior, siempre visibles al hacer scroll
+- Fondo sólido con blur en la barra inferior para que no se mezcle con las tarjetas
+- Reloj fijo con fondo en pastilla, siempre legible sobre cualquier color
+- Botones Reset y Categoría con el mismo estilo y z-index correcto, sin quedar tapados
+- Corrección de layout en pantallas/ventanas pequeñas: padding inferior para que los botones de añadir no queden ocultos bajo la barra
+- Nuevo enlace predeterminado: Gitmoji (https://gitmoji.dev) en Programación
+
 ### v1.2
 - Drag & drop completamente rediseñado: zonas de drop visibles en esquina de cada icono
 - Corrección del cálculo de posición al mover iconos hacia adelante
@@ -91,7 +101,7 @@ Si se pulsa **Reset**, se recuperan los enlaces predeterminados definidos en `sc
 ## 👤 Autor
 
 **Verónica Corpa**
-Versión: 1.2
+Versión: 1.3
 
 ---
 

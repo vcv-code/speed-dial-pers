@@ -29,7 +29,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 18px;
-    padding: 22px 18px 18px;
+    padding: 22px 18px 90px; /* padding-bottom deja espacio libre para la barra fija */
 }
 
 /* CARD */
@@ -323,35 +323,49 @@ body.is-dragging .quick-links a:not(.dragging) .drop-zone.active {
 /* BOTONES SUPERIORES */
 #resetBtn,
 #addCategoryBtn {
-    padding: 6px 10px;
+    padding: 4px 10px;
     border-radius: 8px;
     border: none;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(11, 11, 11, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     color: white;
     cursor: pointer;
     font-size: 12px;
+    opacity: 0.85;
+    z-index: 100;
+    position: relative;
 }
 
 #resetBtn:hover,
 #addCategoryBtn:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(11, 11, 11, 0.7);
+    opacity: 1;
 }
 
 /* BUSCADOR */
 .search-container {
     position: fixed;
-    bottom: 25px;
+    bottom: 0;
     left: 0;
     width: 100%;
+    padding: 10px 16px 14px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    background: rgba(11, 11, 11, 0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    box-sizing: border-box;
+    z-index: 100;
 }
 
 .search-container input {
     width: 500px;
-    max-width: 80vw;
+    max-width: calc(100vw - 120px); /* deja hueco al botón Maps */
 
     padding: 10px 18px;
     border-radius: 999px;
@@ -362,6 +376,16 @@ body.is-dragging .quick-links a:not(.dragging) .drop-zone.active {
     font-size: 14px;
 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* En ventanas muy estrechas el input ocupa casi todo el ancho y Maps baja */
+@media (max-width: 480px) {
+    .search-container input {
+        max-width: 88vw;
+    }
+    .maps-btn {
+        margin-bottom: 4px;
+    }
 }
 
 /* Botón Maps */
@@ -418,12 +442,19 @@ body.is-dragging .quick-links a:not(.dragging) .drop-zone.active {
 
     color: white;
     font-size: 13px;
-    opacity: 0.8;
+    opacity: 0.85;
 
     text-align: right;
     line-height: 1.2;
 
     pointer-events: none;
+    z-index: 100;
+
+    background: rgba(11, 11, 11, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 3px 8px;
+    border-radius: 8px;
 }
 
 .quick-links a.dragging {
