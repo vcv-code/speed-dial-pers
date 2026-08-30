@@ -43,7 +43,7 @@ h1 {
 
     display: flex;
     flex-direction: column;
-    min-height: 220px;
+    min-height: 320px;
 
     transition: transform 0.2s ease, opacity 0.2s ease;
     animation: fadeIn 0.2s ease;
@@ -164,15 +164,91 @@ h1 {
     opacity: 0.5;
 }
 
+/* BOTÓN ELIMINAR CATEGORÍA */
+.delete-card-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.12);
+    color: #333;
+    font-size: 12px;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    opacity: 0.5;
+    transition: all 0.15s ease;
+    z-index: 2;
+}
+
+.card:hover .delete-card-btn {
+    opacity: 0.85;
+}
+
+.delete-card-btn:hover {
+    opacity: 1;
+    background: #e53935;
+    color: white;
+}
+
+/* BOTÓN AÑADIR ENLACE */
+.add-card-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.12);
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    opacity: 0.5;
+    transition: all 0.15s ease;
+    z-index: 2;
+}
+
+.card:hover .add-card-btn {
+    opacity: 0.85;
+}
+
+.add-card-btn:hover {
+    opacity: 1;
+    background: #43a047;
+    color: white;
+}
+
 /* GRID INTERNO DE LINKS */
 .quick-links {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    grid-template-rows: repeat(3, 90px);
+    grid-auto-rows: 90px;
+    align-content: start;
     gap: 8px;
 
-    max-height: calc(90px * 2 + 8px);
+    max-height: calc(90px * 3 + 8px * 2);
     overflow-y: auto;
-    min-height: calc(90px * 2 + 8px);
+    min-height: calc(90px * 3 + 8px * 2);
     flex-grow: 1;
 }
 
@@ -306,20 +382,6 @@ body.is-dragging .quick-links a:not(.dragging) .drop-zone.active {
     word-break: break-word;
 }
 
-/* BOTON AÑADIR */
-.add-link {
-    margin-top: 8px;
-    border: none;
-    background: rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
-    padding: 8px;
-    cursor: pointer;
-}
-
-.add-link:hover {
-    background: rgba(0, 0, 0, 0.18);
-}
-
 /* BOTONES SUPERIORES */
 #resetBtn,
 #addCategoryBtn {
@@ -432,6 +494,24 @@ body.is-dragging .quick-links a:not(.dragging) .drop-zone.active {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+/* CAMPO DE COLOR (modal categoría) */
+.color-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #333;
+}
+
+.color-field input[type="color"] {
+    width: 48px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 /* RELOJ */
