@@ -28,6 +28,7 @@ Extensión de navegador tipo speed dial para personalizar la nueva pestaña con 
   - fallback a Google (`s2/favicons`)
   - icono local por defecto
 - Persistencia con `localStorage`
+- Exportar todos los enlaces y categorías a un archivo `.json` (botón **💾 Exportar**) e importarlos de vuelta (botón **📂 Importar**), como copia de seguridad independiente del Reset
 - Buscador de Google integrado con acceso rápido a Maps
 - Reloj en tiempo real
 - Barra inferior y reloj fijos, siempre visibles por encima del contenido
@@ -77,6 +78,9 @@ Si se pulsa **Reset**, se recuperan los enlaces predeterminados definidos en `sc
 
 ## 🔄 Historial de cambios
 
+### v1.5
+- Botones **💾 Exportar** / **📂 Importar**: guardan todas las categorías y enlaces actuales en un archivo `.json` descargable y permiten recargarlos después, como copia de seguridad manual independiente del botón Reset
+
 ### v1.4
 - Botón **✕** visible en cada tarjeta para eliminar la categoría (sustituye al atajo oculto de clic derecho sobre el título)
 - Crear categoría ahora abre un único formulario con nombre y color a la vez, en vez de dos preguntas seguidas
@@ -114,7 +118,7 @@ Si se pulsa **Reset**, se recuperan los enlaces predeterminados definidos en `sc
 ## 👤 Autor
 
 **Verónica Corpa**
-Versión: 1.4
+Versión: 1.5
 
 ---
 
@@ -134,6 +138,5 @@ Proyecto desarrollado como práctica de programación web, con enfoque en usabil
 
 - Selector manual de iconos (subida o librería)
 - Temas (modo claro/oscuro)
-- Exportar / importar configuración
 - Sincronización entre dispositivos
 - Edición directa sin modal
