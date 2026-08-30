@@ -117,6 +117,22 @@ function save() {
   localStorage.setItem("linksData", JSON.stringify(linkPages));
 }
 
+// Genera una versión clara (pastel) de un color hex, mezclándolo con blanco
+function lightenColor(hex, percent) {
+  const num = parseInt(String(hex).replace("#", ""), 16);
+  if (isNaN(num)) return "#e0e0e0";
+
+  let r = (num >> 16) & 0xff;
+  let g = (num >> 8) & 0xff;
+  let b = num & 0xff;
+
+  r = Math.min(255, Math.round(r + (255 - r) * percent));
+  g = Math.min(255, Math.round(g + (255 - g) * percent));
+  b = Math.min(255, Math.round(b + (255 - b) * percent));
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
 // (getDropIndex y placeholder eliminados: ahora se usa la zona de drop en esquina)
 
 // CONTROLES UI
@@ -142,17 +158,50 @@ document.getElementById("resetBtn").onclick = () => {
   location.reload();
 };
 
-// CREAR CATEGORÍA
-document.getElementById("addCategoryBtn").onclick = () => {
-  const name = prompt("Nombre de la categoría:")?.trim();
-  if (!name) return;
+// ===== MODAL CATEGORÍA =====
+const categoryModal = document.createElement("div");
+categoryModal.className = "modal";
+categoryModal.innerHTML = `
+  <div class="modal-content">
+    <input id="categoryName" placeholder="Nombre de la categoría">
+    <label class="color-field">
+      Color
+      <input id="categoryColor" type="color" value="#999999">
+    </label>
+    <button id="categorySave">Guardar</button>
+    <button id="categoryCancel">Cancelar</button>
+  </div>
+`;
+document.body.appendChild(categoryModal);
 
-  const color = prompt("Color:", "#999");
+const categoryNameInput = document.getElementById("categoryName");
+const categoryColorInput = document.getElementById("categoryColor");
+
+function openCategoryModal() {
+  categoryNameInput.value = "";
+  categoryColorInput.value = "#999999";
+  categoryModal.style.display = "flex";
+  categoryNameInput.focus();
+}
+
+categoryNameInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("categorySave").click();
+});
+
+document.getElementById("categoryCancel").onclick = () => {
+  categoryModal.style.display = "none";
+};
+
+document.getElementById("categorySave").onclick = () => {
+  const name = categoryNameInput.value.trim();
+  const color = categoryColorInput.value;
+
+  if (!name) return;
 
   const id = name.toLowerCase().replace(/\s+/g, "_");
 
   if (linkPages.some(p => p.id === id)) {
-    alert("Ya existe");
+    alert("Ya existe una categoría con ese nombre");
     return;
   }
 
@@ -163,9 +212,13 @@ document.getElementById("addCategoryBtn").onclick = () => {
     color
   });
 
+  categoryModal.style.display = "none";
   save();
   render();
 };
+
+// CREAR CATEGORÍA
+document.getElementById("addCategoryBtn").onclick = openCategoryModal;
 
 // RENDER
 function render() {
@@ -177,6 +230,7 @@ function render() {
 
     if (page.color && !defaultPages.find(p => p.id === page.id)) {
       card.style.borderTop = `4px solid ${page.color}`;
+      card.style.background = lightenColor(page.color, 0.85);
     }
 
     // HEADER
@@ -209,14 +263,30 @@ function render() {
       render();
     });
 
-    header.addEventListener("contextmenu", e => {
-      e.preventDefault();
+    // BOTÓN ELIMINAR CATEGORÍA
+    const deleteCardBtn = document.createElement("button");
+    deleteCardBtn.className = "delete-card-btn";
+    deleteCardBtn.textContent = "✕";
+    deleteCardBtn.title = "Eliminar categoría";
 
+    deleteCardBtn.addEventListener("click", e => {
+      e.stopPropagation();
       if (!confirm(`¿Eliminar "${page.title}"?`)) return;
 
       linkPages.splice(pageIndex, 1);
       save();
       render();
+    });
+
+    // BOTÓN AÑADIR ENLACE
+    const addCardBtn = document.createElement("button");
+    addCardBtn.className = "add-card-btn";
+    addCardBtn.textContent = "+";
+    addCardBtn.title = "Añadir enlace";
+
+    addCardBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      openModal(pageIndex);
     });
 
     // mover cards completas (drag desde el header)
@@ -269,14 +339,8 @@ function render() {
       quick.appendChild(createLink(link, pageIndex, i));
     });
 
-    // botón añadir
-    const addBtn = document.createElement("button");
-    addBtn.className = "add-link";
-    addBtn.textContent = "+ Añadir";
-    addBtn.onclick = () => openModal(pageIndex);
-
     // montar card
-    card.append(header, quick, addBtn);
+    card.append(deleteCardBtn, addCardBtn, header, quick);
     grid.appendChild(card);
   });
 }
@@ -337,7 +401,10 @@ function createLink(link, pageIndex, linkIndex) {
   // Impedir que soltar sobre el cuerpo del icono (fuera del círculo verde)
   // llegue al quick-links y provoque un "añadir al final" no deseado.
   // Sin preventDefault → el navegador muestra 🚫 y no dispara drop.
+  // Excepción: si lo que se arrastra es una TARJETA completa (no un enlace),
+  // dejamos pasar el evento para poder soltarla encima de cualquier icono.
   a.addEventListener("dragover", e => {
+    if (e.dataTransfer.types.includes("card-index")) return;
     e.stopPropagation();
   });
 
@@ -348,6 +415,7 @@ function createLink(link, pageIndex, linkIndex) {
   a.appendChild(dropZone);
 
   dropZone.addEventListener("dragover", e => {
+    if (e.dataTransfer.types.includes("card-index")) return; // dejar pasar el arrastre de tarjeta
     e.preventDefault();
     e.stopPropagation();
     e.dataTransfer.dropEffect = "move";
@@ -359,6 +427,8 @@ function createLink(link, pageIndex, linkIndex) {
   });
 
   dropZone.addEventListener("drop", e => {
+    if (e.dataTransfer.types.includes("card-index")) return; // dejar que la tarjeta la gestione card.drop
+
     e.preventDefault();
     e.stopPropagation();
     dropZone.classList.remove("active");
@@ -426,6 +496,13 @@ modal.innerHTML = `
   </div>
 `;
 document.body.appendChild(modal);
+
+// Guardar con Enter desde cualquiera de los dos campos
+["name", "url"].forEach(id => {
+  document.getElementById(id).addEventListener("keydown", e => {
+    if (e.key === "Enter") document.getElementById("save").click();
+  });
+});
 
 function openModal(pageIndex, linkIndex = null) {
   currentPage = pageIndex;
