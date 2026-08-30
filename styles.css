@@ -384,7 +384,9 @@ body.is-dragging .quick-links a:not(.dragging) .drop-zone.active {
 
 /* BOTONES SUPERIORES */
 #resetBtn,
-#addCategoryBtn {
+#addCategoryBtn,
+#exportBtn,
+#importBtn {
     padding: 4px 10px;
     border-radius: 8px;
     border: none;
@@ -400,7 +402,9 @@ body.is-dragging .quick-links a:not(.dragging) .drop-zone.active {
 }
 
 #resetBtn:hover,
-#addCategoryBtn:hover {
+#addCategoryBtn:hover,
+#exportBtn:hover,
+#importBtn:hover {
     background: rgba(11, 11, 11, 0.7);
     opacity: 1;
 }

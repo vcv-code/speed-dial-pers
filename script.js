@@ -147,6 +147,9 @@ controls.style.zIndex = "100";
 controls.innerHTML = `
   <button id="resetBtn">Reset</button>
   <button id="addCategoryBtn">+ Categoría</button>
+  <button id="exportBtn">💾 Exportar</button>
+  <button id="importBtn">📂 Importar</button>
+  <input type="file" id="importFile" accept="application/json" style="display:none">
 `;
 
 document.body.appendChild(controls);
@@ -157,6 +160,61 @@ document.getElementById("resetBtn").onclick = () => {
   localStorage.removeItem("linksData");
   location.reload();
 };
+
+// EXPORTAR (descarga un .json con el estado actual de linkPages)
+document.getElementById("exportBtn").onclick = () => {
+  const dataStr = JSON.stringify(linkPages, null, 2);
+  const blob = new Blob([dataStr], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `speed-dial-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  URL.revokeObjectURL(url);
+};
+
+// IMPORTAR (carga un .json exportado previamente y sustituye linkPages)
+const importFileInput = document.getElementById("importFile");
+
+document.getElementById("importBtn").onclick = () => {
+  importFileInput.click();
+};
+
+importFileInput.addEventListener("change", e => {
+  const file = e.target.files[0];
+  e.target.value = ""; // permite volver a elegir el mismo archivo más adelante
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    let parsed;
+
+    try {
+      parsed = JSON.parse(reader.result);
+    } catch {
+      alert("El archivo no es un JSON válido.");
+      return;
+    }
+
+    if (!Array.isArray(parsed) || !parsed.length) {
+      alert("El archivo no tiene el formato esperado de una copia de Mi Speed Dial.");
+      return;
+    }
+
+    if (!confirm("Esto sustituirá todas las categorías y enlaces actuales por los del archivo. ¿Continuar?")) return;
+
+    linkPages = parsed;
+    save();
+    render();
+  };
+
+  reader.readAsText(file);
+});
 
 // ===== MODAL CATEGORÍA =====
 const categoryModal = document.createElement("div");
